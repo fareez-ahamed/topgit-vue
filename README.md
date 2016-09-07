@@ -1,5 +1,6 @@
 # topgit-vue
-> topgit using Vue.js
+
+> A Vue.js project
 
 ## Build Setup
 
