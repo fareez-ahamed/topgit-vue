@@ -1,6 +1,9 @@
 # topgit-vue
 
-> A Vue.js project
+> Find top repositories on github
+
+Topgit-vue is a Single Page Application using Vue.js for finding 
+top projects in github based on stars
 
 ## Build Setup
 
