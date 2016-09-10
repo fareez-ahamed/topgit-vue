@@ -12,8 +12,8 @@ export default {
     Vue.http.get(url).then(callback, error)
   },
 
-  searchRepoByLang (lang, minStar, page, callback, error) {
-    this.searchRepos('stars:>=' + minStar + ' language:' + lang, page, callback, error)
+  searchReposByLang (lang, minStar, page, callback, error) {
+    this.searchRepos(`stars:>=${minStar} language:${lang}`, page, callback, error)
   },
 
   getRepos (username, callback) {

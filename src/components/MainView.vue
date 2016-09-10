@@ -29,6 +29,7 @@ export default {
   data () {
     return {
       query: '',
+      minStar: 0,
       currentPage: 1,
       alerts: [],
       repos: []
@@ -37,12 +38,11 @@ export default {
 
   methods: {
     search () {
-      github.searchRepos(this.query, this.currentPage,
+      github.searchReposByLang(this.query, this.minStar, this.currentPage,
         (response) => {
           this.repos = response.body.items
           // console.log(this.repos)
         }, (error) => {
-          console.log('This is error')
           console.log(error)
         })
     }
