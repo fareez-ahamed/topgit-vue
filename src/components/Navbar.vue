@@ -12,7 +12,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#mystats">My Repos</a></li>
+        <li><a v-link="{ path: '/myrepos'}">My Repos</a></li>
       </ul>
 
     </div>

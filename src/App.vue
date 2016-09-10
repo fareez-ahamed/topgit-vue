@@ -1,6 +1,8 @@
 <template>
   <navbar></navbar>
-  <router-view></router-view>
+  <div class="container navbar-margin">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
@@ -15,4 +17,7 @@ export default {
 </script>
 
 <style>
+.navbar-margin {
+  margin-top: 100px;
+}
 </style>

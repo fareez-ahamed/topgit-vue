@@ -1,5 +1,5 @@
 <template>
-
+This is my repos view.
 </template>
 
 <script>
