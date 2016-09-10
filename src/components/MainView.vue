@@ -31,22 +31,18 @@ export default {
       query: '',
       currentPage: 1,
       alerts: [],
-      repos: [{
-        owner: {
-          login: 'fareez'
-        },
-        name: 'repo'
-      }]
+      repos: []
     }
   },
 
   methods: {
     search () {
-      github.searchRepoByLang(this.query, this.currentPage,
+      github.searchRepos(this.query, this.currentPage,
         (response) => {
-          console.log(response)
           this.repos = response.body.items
+          // console.log(this.repos)
         }, (error) => {
+          console.log('This is error')
           console.log(error)
         })
     }
