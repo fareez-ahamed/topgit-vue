@@ -9,10 +9,10 @@ Vue.use(VueRouter)
 let router = new VueRouter()
 
 /* eslint-disable no-new */
-new Vue({
-  el: 'body',
-  components: { App }
-})
+// new Vue({
+//   el: 'body',
+//   components: { App }
+// })
 
 router.map({
   '/': {
@@ -22,3 +22,5 @@ router.map({
     component: MyReposView
   }
 })
+
+router.start(App, 'body')
