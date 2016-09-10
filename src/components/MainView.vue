@@ -6,8 +6,8 @@
         <input type="text" v-model="query" @keypress.enter="search" class="form-control" placeholder="Search by Language">
       </div>
     </form>
-    <div v-repeat="alert in alerts" class="alert alert-{{alert.type}}" role="alert">{{alert.msg}}</div>
-    <repositories v-repeat="repo in repos" :details="repo"></repositories>
+    <div v-for="alert in alerts" class="alert alert-{{alert.type}}" role="alert">{{alert.msg}}</div>
+    <repo v-for="repo in repos" :details="repo"></repo>
   </div>
   <div class="col-md-4">
     <filter-options></filter-options>
@@ -18,18 +18,25 @@
 
 <script>
 import github from '../services/Github'
-import Repositories from './Repositories'
+import Repo from './Repo'
+import RateLimit from './RateLimit'
+import FilterOptions from './FilterOptions'
 
 export default {
 
-  components: { Repositories },
+  components: { Repo, RateLimit, FilterOptions },
 
   data () {
     return {
       query: '',
       currentPage: 1,
       alerts: [],
-      repos: []
+      repos: [{
+        owner: {
+          login: 'fareez'
+        },
+        name: 'repo'
+      }]
     }
   },
 
