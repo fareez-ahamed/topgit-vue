@@ -14,6 +14,16 @@ export default {
 
   searchRepoByLang (lang, minStar, page, callback, error) {
     this.searchRepos('stars:>=' + minStar + ' language:' + lang, page, callback, error)
+  },
+
+  getRepos (username, callback) {
+    var url = `${baseurl}/users/${username}/repos`
+    Vue.http.get(url).then(callback)
+  },
+
+  getUser (username, callback) {
+    var url = `${baseurl}/users/${username}/repos`
+    Vue.http.get(url).then(callback)
   }
 
 }
