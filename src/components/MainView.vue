@@ -36,7 +36,7 @@ export default {
       minStar: 0,
       repoPagination: {
         currentPage: 1,
-        totalItems: 151,
+        totalItems: 7,
         itemsPerPage: 5
       },
       alerts: [],

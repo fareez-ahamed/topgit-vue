@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import Util from '../services/Util'
+
 export default {
 
   props: {
@@ -58,12 +60,10 @@ export default {
     paginationRange () {
       let start = this.currentPage - this.visiblePages / 2 <= 0
                     ? 1 : this.currentPage + this.visiblePages / 2 > this.lastPage
-                    ? this.lastPage - this.visiblePages + 1
+                    ? Util.lowerBound(this.lastPage - this.visiblePages + 1, 1)
                     : Math.ceil(this.currentPage - this.visiblePages / 2)
-      console.log('Start Value' + start)
-      console.log('Last Page' + this.lastPage)
       let range = []
-      for (let i = 0; i < this.visiblePages; i++) {
+      for (let i = 0; i < this.visiblePages && i < this.lastPage; i++) {
         range.push(start + i)
       }
       return range
