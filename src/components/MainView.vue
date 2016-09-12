@@ -3,14 +3,15 @@
   <div class="col-md-8">
     <form>
       <div class="form-group">
-        <input type="text" v-model="repoPagination.currentPage" @keypress.enter="search" class="form-control" placeholder="Search by Language">
+        <input type="text" v-model="query" @keypress.enter="search" class="form-control" placeholder="Search by Language">
       </div>
     </form>
     <div v-for="alert in alerts" class="alert alert-{{alert.type}}" role="alert">{{alert.msg}}</div>
     <repo v-for="repo in repos" :details="repo"></repo>
     <pagination :current-page.sync="repoPagination.currentPage"
                 :total-items="repoPagination.totalItems"
-                :items-per-page="repoPagination.itemsPerPage"></pagination>
+                :items-per-page="repoPagination.itemsPerPage"
+                @page-changed="search"></pagination>
   </div>
   <div class="col-md-4">
     <filter-options></filter-options>
@@ -36,8 +37,8 @@ export default {
       minStar: 0,
       repoPagination: {
         currentPage: 1,
-        totalItems: 7,
-        itemsPerPage: 5
+        totalItems: 0,
+        itemsPerPage: 30
       },
       alerts: [],
       repos: []
@@ -46,10 +47,11 @@ export default {
 
   methods: {
     search () {
-      github.searchReposByLang(this.query, this.minStar, this.currentPage,
+      console.log('search-called')
+      github.searchReposByLang(this.query, this.minStar, this.repoPagination.currentPage,
         (response) => {
           this.repos = response.body.items
-          // console.log(this.repos)
+          this.repoPagination.totalItems = response.body.total_count
         }, (error) => {
           console.log(error)
         })

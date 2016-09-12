@@ -9,6 +9,7 @@ export default {
 
   searchRepos (query, page, callback, error) {
     let url = `${baseurl}/search/repositories?q=${encodeURIComponent(query)}&page=${page}&sort=stars&order=desc`
+    console.log(url)
     Vue.http.get(url).then(callback, error)
   },
 

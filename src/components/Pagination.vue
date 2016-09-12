@@ -73,6 +73,7 @@ export default {
   methods: {
     pageChanged (pageNum) {
       this.currentPage = pageNum
+      this.$dispatch('page-changed', pageNum)
     },
 
     activePage (pageNum) {
